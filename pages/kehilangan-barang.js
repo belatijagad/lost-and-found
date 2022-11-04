@@ -1,7 +1,8 @@
 export default function Kehilangan() {
     return (
-        <>
-            Page pencarian barang hilang
-        </>
+        <div className="container mx-auto">
+            <button>Tes</button>
+            <input placeholder="tes" />
+        </div>
     )
 }

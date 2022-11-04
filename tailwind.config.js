@@ -6,7 +6,15 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    colors: {
+      'nav': '#2c2c2c',
+      'foot': '#f1f1f1',
+    },
+    extend: {
+      fontFamily: {
+        'qs': ['Quicksand'],
+      },
+    },
   },
   plugins: [],
 }

@@ -1,9 +1,7 @@
-const signin = () => {
+export default function SignIn() {
     return (
-        <div>
-            Tes
-        </div>
+        <>
+            Halaman sign in
+        </>
     );
 }
-
-export default signin;

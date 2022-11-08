@@ -1,0 +1,18 @@
+[
+    {
+        "id": 42069,
+        "nama": "abel",
+        "kontak": "belatijagad",
+        "jenis": "buku",
+        "deskripsi": "ini buku",
+        "link": "https://google.com"
+    },
+    {
+        "id": 69420,
+        "nama": "aberu",
+        "kontak": "beratijagad",
+        "jenis": "buru",
+        "deskripsi": "ini buru",
+        "link": "https://google.co.uk"
+    }
+]

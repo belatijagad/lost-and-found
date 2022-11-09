@@ -1,32 +1,32 @@
+import Head from "next/head";
 import Form from "./components/form";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+
+import { getDocs } from "firebase/firestore";
+import { colKehilangan } from "../firebase/clientApp";
+
 
 export default function Kehilangan() {
-    const barangHilang = [
-        {
-            "id": 42069,
-            "nama": "Tas Fathan",
-            "kontak": "belatijagad",
-            "deskripsi": "ini buku",
-            "tanggal": "4/12/2003",
-            "tempat": "Punggung Faza",
-            "status": 1,
-            "email": "belatijagads@gmail.com",
-        },
-        {
-            "id": 69420,
-            "nama": "Entah",
-            "kontak": "beratijagad",
-            "deskripsi": "ini buru",
-            "tanggal": "4/12/2003",
-            "tempat": "pacil baru",
-            "status": 0,
-            "email": "belatijagads@gmail.com",
-        }
-    ]
+    const [listBarang, setListBarang] = useState([]);
+    useEffect(() => {
+        ; (async () => {
+            const snapshots = await getDocs(colKehilangan);
+            const docs = snapshots.docs.map(doc => {
+                const data = doc.data()
+                data.id = doc.id
+                return data
+            })
+            setListBarang(docs)
+        })()
+    }, [])
     let i = 0;
     let classes = "";
     return (
         < div className="container mx-auto min-h-[80vh]" >
+            <Head>
+                <title>Barang Hilang</title>
+            </Head>
             <form action="" className="grid grid-cols-12 gap-4 py-8">
                 <div className="text-sm col-span-2 bg-[#d5eafc] rounded-full font-qs font-bold">
                     <Form
@@ -48,32 +48,33 @@ export default function Kehilangan() {
                     <p className="col-span-4 text-[#555555] font-bold">LOKASI PENEMUAN</p>
                     <p className="col-span-2 text-[#555555] font-bold">STATUS</p>
                 </div>
-                {barangHilang.map((barang) => (
-                    i++,
-                    i % 2 == 0 ?
-                        classes = "grid grid-cols-12 px-4 py-2 bg-[#ededed]" :
-                        classes = "grid grid-cols-12 px-4 py-2 bg-[#F8F8F8]",
-                    <div className={classes}>
-                        <p className="col-span-2">{barang.tanggal}</p>
-                        <p className="col-span-4">{barang.nama}</p>
-                        <p className="col-span-4">{barang.tempat}</p>
-                        <p className="col-span-2">
-                            {barang.status == 0 ?
-                                <p
-                                    className="text-[#C11919] font-qs font-bold bg-[#F2DEDE] inline px-4 py-1 rounded-full"
-                                >
-                                    Belum diambil
-                                </p>
-                                :
-                                <p
-                                    className="text-[#274A0B] font-qs font-bold bg-[#D3DBCD] inline px-4 py-1 rounded-full"
-                                >
-                                    Sudah diambil
-                                </p>
-                            }
-                        </p>
-                    </div>
-                ))}
+                {
+                    listBarang.map((barang) => (
+                        i++,
+                        i % 2 == 0 ?
+                            classes = "grid grid-cols-12 px-4 py-2 bg-[#ededed]" :
+                            classes = "grid grid-cols-12 px-4 py-2 bg-[#F8F8F8]",
+                        <div className={classes} key={barang.barang.toString()}>
+                            <p className="col-span-2">{barang.tanggal}</p>
+                            <Link href={"/kehilangan-barang/" + barang.id} className="col-span-4">{barang.barang}</Link>
+                            <p className="col-span-4">{barang.tempat}</p>
+                            <div className="col-span-2">
+                                {barang.status == 0 ?
+                                    <p
+                                        className="text-[#C11919] font-qs font-bold bg-[#F2DEDE] inline px-4 py-1 rounded-full"
+                                    >
+                                        Belum diambil
+                                    </p>
+                                    :
+                                    <p
+                                        className="text-[#274A0B] font-qs font-bold bg-[#D3DBCD] inline px-4 py-1 rounded-full"
+                                    >
+                                        Sudah diambil
+                                    </p>
+                                }
+                            </div>
+                        </div>
+                    ))}
             </div>
         </div >
     )

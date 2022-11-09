@@ -23,6 +23,7 @@ export default function Hero() {
                         width="auto"
                         height="512"
                         className="absolute bottom-[-64px]"
+                        alt="Recruiter"
                     />
                 </div>
                 <Image
@@ -30,12 +31,14 @@ export default function Hero() {
                     height={52}
                     width="auto"
                     className="absolute top-[-28px]"
+                    alt="Sparkle"
                 />
                 <Image
                     src={Sparkle}
                     height={52}
                     width="auto"
                     className="absolute top-[-16px] left-[48px]"
+                    alt="Sparkle"
                 />
             </div>
 

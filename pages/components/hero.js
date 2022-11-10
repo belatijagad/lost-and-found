@@ -1,47 +1,36 @@
 import Sparkle from '../../public/hero_sparkle.png';
-import Recruiter from '../../public/hero_recruiter.png';
+import Recruiter from '../../public/hero_recruiter2.png';
 import Image from 'next/image';
 
 export default function Hero() {
     return (
-        <main className="container mx-auto">
-            <div
-                className="bg-[#d5eafc] rounded-3xl h-[240px]
-                            relative mx-auto flex my-32"
-            >
-                <div className="flex flex-col justify-center px-8">
-                    <p className="font-qs font-bold text-xl pb-2">
-                        Selamat datang di Lost and Found!
+        <main className="container mx-auto min-h-[90vh] font-qs py-16">
+            <div className="w-90% grid md:grid-cols-12 md:px-8 px-4 grid-cols-6 relative">
+                <Image
+                    src={Recruiter}
+                    alt="Recruiter"
+                    className="col-span-6 md:order-last"
+                />
+                <div className="col-span-6 md:order-first md:flex flex-col justify-center hidden">
+                    <p className="font-bold lg:text-2xl md:text-xl text-lg pl-8">
+                        Lost and Found Fasilkom
                     </p>
-                    <h1 className="font-qs font-bold text-4xl">
-                        Yuk, bantu kami mencari barang yang hilang!
+                    <h1 className="font-bold lg:text-5xl md:text-3xl text-2xl pl-8">
+                        Yuk, bantu kami cari barang yang hilang!
                     </h1>
                 </div>
-                <div className="relative w-[690px]">
-                    <Image
-                        src={Recruiter}
-                        width="auto"
-                        height="512"
-                        className="absolute bottom-[-64px]"
-                        alt="Recruiter"
-                    />
-                </div>
-                <Image
-                    src={Sparkle}
-                    height={52}
-                    width="auto"
-                    className="absolute top-[-28px]"
-                    alt="Sparkle"
-                />
-                <Image
-                    src={Sparkle}
-                    height={52}
-                    width="auto"
-                    className="absolute top-[-16px] left-[48px]"
-                    alt="Sparkle"
+                <div className="absolute bottom-0 right-[20px] bg-[#d5eafc] z-[-1] 
+                                rounded-3xl md:w-[92vw] lg:h-[300px] md:h-[200px] w-[90vw] sm:h-[250px] h-[170px]"
                 />
             </div>
-
+            <div className="col-span-6 md:order-first flex flex-col justify-center md:hidden text-center">
+                <p className="font-bold lg:text-2xl md:text-xl text-lg">
+                    Lost and Found Fasilkom
+                </p>
+                <h1 className="font-bold lg:text-5xl md:text-3xl text-3xl">
+                    Yuk, bantu kami cari barang yang hilang!
+                </h1>
+            </div>
         </main>
     )
 }

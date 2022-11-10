@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
+import { getFirestore, collection, getDocs, orderBy } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -17,3 +17,4 @@ export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const colKehilangan = collection(db, 'kehilangan');
 export const storage = getStorage(app);
+export const auth = getAuth(app);

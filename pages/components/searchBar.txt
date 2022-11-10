@@ -1,0 +1,34 @@
+import { useState } from "react";
+
+export default function Searchbar({ details }) {
+    const [searchField, setSearchField] = useState("");
+
+    const filteredBarang = details.filter(
+        barang => {
+            return (
+                barang.name.toLowerCase().includes(searchField.toLowerCase)
+            )
+        }
+    )
+
+    const handleChange = e => {
+        setSearchField(e.target.value);
+    }
+    function searchList() {
+        return (
+            <div>
+
+            </div>
+        )
+    }
+    return (
+        <div>
+            <input
+                className="col-span-10 rounded-full border-[1px] border-[rgba(0,0,0,0.25)] pl-6
+                               active:border-[rgba(0,0,0,0.5)] active:border-[1px]"
+                placeholder="Cari barang"
+                onChange={handleChange}
+            />
+        </div>
+    )
+}
